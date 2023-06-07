@@ -8,7 +8,6 @@ namespace DataStructures
 {
     public class Node
     {
-
         public int Data;
         public Node Next;
 
@@ -23,7 +22,7 @@ namespace DataStructures
     {
         private Node Head;
 
-        public void AddFirst(int data)
+        public void AddLast(int data)
         {
             Node newNode = new Node(data);
 
@@ -33,26 +32,34 @@ namespace DataStructures
             }
             else
             {
-                newNode.Next = Head;
-                Head = newNode;
-            }
+                Node currentNode = Head;
 
+                while (currentNode.Next != null)
+                {
+                    currentNode = currentNode.Next;
+                }
+
+                currentNode.Next = newNode;
+            }
         }
-       
+
         public void PrintList()
         {
             Node currentNode = Head;
 
             while (currentNode != null)
             {
-                Console.Write(currentNode.Data );
-                    currentNode = currentNode.Next;
-                if( currentNode != null ) 
-                { Console.Write("->"); }
-            }    
-           //Console.WriteLine("null");
+                Console.Write(currentNode.Data);
+                currentNode = currentNode.Next;
+                if (currentNode != null)
+                {
+                    Console.Write("->"); 
+                        
+                        }
+            }
+
+            //Console.WriteLine("null");
         }
     }
 }
-
 

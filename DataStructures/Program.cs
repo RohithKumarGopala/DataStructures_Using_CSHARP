@@ -5,10 +5,10 @@ public class Program
     {
         LinkedList linkedList = new LinkedList();
 
-        linkedList.AddFirst(33);
-        linkedList.AddFirst(22);
-        linkedList.AddFirst(11);
-        linkedList.AddFirst(99);
+        linkedList.AddLast(33);
+        linkedList.AddLast(22);
+        linkedList.AddLast(11);
+        linkedList.AddLast(99);
 
         linkedList.PrintList();
     }
