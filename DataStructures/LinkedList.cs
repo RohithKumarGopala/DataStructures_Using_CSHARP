@@ -1,65 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace DataStructures
 {
+
     public class Node
     {
-        public int Data;
-        public Node Next;
+         public int Data;
+         public Node Next;
 
-        public Node(int data)
-        {
-            Data = data;
-            Next = null;
-        }
-    }
-
-    public class LinkedList
-    {
-        private Node Head;
-
-        public void AddLast(int data)
-        {
-            Node newNode = new Node(data);
-
-            if (Head == null)
+            public Node(int data)
             {
-                Head = newNode;
+                Data = data;
+                Next = null;
             }
-            else
-            {
-                Node currentNode = Head;
+        }
 
-                while (currentNode.Next != null)
+        class LinkedList
+        {
+            private Node head;
+
+            public LinkedList()
+            {
+                head = null;
+            }
+
+            public void Insert(int data)
+            {
+                Node newNode = new Node(data);
+
+                if (head == null)
                 {
-                    currentNode = currentNode.Next;
+                    head = newNode;
+                }
+                else
+                {
+                    Node current = head;
+
+                    while (current.Next != null)
+                    {
+                        current = current.Next;
+                    }
+
+                    current.Next = newNode;
                 }
 
-                currentNode.Next = newNode;
+                Console.WriteLine("Inserted: " + data);
             }
-        }
 
-        public void PrintList()
-        {
-            Node currentNode = Head;
-
-            while (currentNode != null)
+            public void DeleteFirst()
             {
-                Console.Write(currentNode.Data);
-                currentNode = currentNode.Next;
-                if (currentNode != null)
+                if (head == null)
                 {
-                    Console.Write("->"); 
-                        
-                        }
+                    Console.WriteLine("Linked list is empty. Nothing to delete.");
+                    return;
+                }
+
+                Console.WriteLine("Deleted: " + head.Data);
+                head = head.Next;
             }
 
-            //Console.WriteLine("null");
+            public void Display()
+            {
+                Node current = head;
+
+                if (current == null)
+                {
+                    Console.WriteLine("Linked list is empty.");
+                    return;
+                }
+
+                Console.Write("Linked List: ");
+
+                while (current != null)
+                {
+                    Console.Write(current.Data + "->");
+                    current = current.Next;
+                }
+
+                Console.WriteLine("End");
+            }
         }
     }
-}
+
 

@@ -1,15 +1,25 @@
 ﻿using DataStructures;
+using System.Collections.Generic;
+
 public class Program
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
-        LinkedList linkedList = new LinkedList();
+        {
+            LinkedList linkedList = new LinkedList();
 
-        linkedList.AddLast(33);
-        linkedList.AddLast(22);
-        linkedList.AddLast(11);
-        linkedList.AddLast(99);
+            linkedList.Display();  
 
-        linkedList.PrintList();
+            linkedList.Insert(10);
+            linkedList.Insert(20);
+            linkedList.Insert(30);
+
+            linkedList.Display();  
+
+            linkedList.DeleteFirst();  
+
+            linkedList.Display();  
+        }
     }
 }
+
