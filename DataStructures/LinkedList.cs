@@ -2,84 +2,98 @@
 
 namespace DataStructures
 {
+        public class Node<T>
+        {
+            public T Data { get; set; }
+            public Node<T> Next { get; set; }
 
-    public class Node
-    {
-         public int Data;
-         public Node Next;
-
-            public Node(int data)
+            public Node(T data)
             {
-                Data = data;
-                Next = null;
+                this.Data = data;
             }
         }
-
-        class LinkedList
+        public class LinkedList<T>
         {
-            private Node head;
+            private Node<T> head;
 
-            public LinkedList()
+
+            public void AddFirst(Node<T> newNode)
             {
-                head = null;
-            }
-
-            public void Insert(int data)
-            {
-                Node newNode = new Node(data);
-
                 if (head == null)
                 {
                     head = newNode;
-                }
-                else
-                {
-                    Node current = head;
-
-                    while (current.Next != null)
-                    {
-                        current = current.Next;
-                    }
-
-                    current.Next = newNode;
+                    return;
                 }
 
-                Console.WriteLine("Inserted: " + data);
+                Node<T> previous = head;
+                head = newNode;
+                newNode.Next = previous;
             }
+
+
+            public void AddLast(Node<T> newNode)
+            {
+                if (head == null)
+                {
+                    head = newNode;
+                    return;
+                }
+                Node<T> temp = head;
+
+                while (temp.Next != null)
+                {
+                    temp = temp.Next;
+                }
+                temp.Next = newNode;
+            }
+
+
+            public void AddAfter(Node<T> data, Node<T> newNode)
+            {
+                Node<T> temp = data;
+                while (temp.Next == null)
+                {
+                    temp.Next = newNode;
+                    return;
+                }
+                newNode.Next = temp.Next;
+                temp.Next = newNode;
+            }
+
 
             public void DeleteFirst()
             {
                 if (head == null)
-                {
-                    Console.WriteLine("Linked list is empty. Nothing to delete.");
                     return;
+
+                Node<T> temp = head.Next;
+                head = temp;
+            }
+
+
+            public void DeleteLast()
+            {
+                Node<T> temp = head;
+                while (temp.Next.Next != null)
+                {
+                    temp = temp.Next;
                 }
 
-                Console.WriteLine("Deleted: " + head.Data);
-                head = head.Next;
+                temp.Next = null;
             }
 
             public void Display()
             {
-                Node current = head;
-
-                if (current == null)
+                Node<T> temp = head;
+                while (temp != null)
                 {
-                    Console.WriteLine("Linked list is empty.");
-                    return;
+                    Console.Write(temp.Data + "->");
+                    temp = temp.Next;
                 }
-
-                Console.Write("Linked List: ");
-
-                while (current != null)
-                {
-                    Console.Write(current.Data + "->");
-                    current = current.Next;
-                }
-
-                Console.WriteLine("End");
+                Console.WriteLine("END");
             }
         }
     }
+
 
 
