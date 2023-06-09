@@ -5,24 +5,30 @@ public class Program
 {
     static void Main(string[] args)
     {
-        DataStructures.LinkedList<int> list = new DataStructures.LinkedList<int>();
-            Node<int> firstNode = new Node<int>(23);
-            Node<int> secondNode = new Node<int>(34);
-            Node<int> thirdNode = new Node<int>(29);
-            Node<int> fourthNode = new Node<int>(15);
-            Node<int> fifthNode = new Node<int>(42);
+        Node<int> FirstNode = new Node<int>(70);
+        Node<int> SecondNode = new Node<int>(40);
+        Node<int> ThirdNode = new Node<int>(30);
+        Node<int> FourthNode = new Node<int>(20);
+        Node<int> FifthNode = new Node<int>(50);
 
-        list.AddLast(thirdNode);
-        list.AddLast(fourthNode);
-        list.AddLast(firstNode);
-        list.AddLast(fifthNode);
+        DataStructures.LinkedList<int> LinkedList = new DataStructures.LinkedList<int>();
+        LinkedList.Display();
+        LinkedList.AddLast(FirstNode);
+        LinkedList.AddLast(SecondNode);
+        LinkedList.AddLast(ThirdNode);
+        LinkedList.AddLast(FifthNode);
 
-        list.AddAfter(fourthNode, secondNode);
+        LinkedList.AddAfter(SecondNode, FourthNode);
 
-        list.DeleteFirst();
-        list.DeleteLast();
-        list.Display();
-        }
+        LinkedList.DeleteFirst();
+        LinkedList.DeleteLast();
+
+        LinkedList.DeleteAfter(SecondNode);
+
+        LinkedList.Display();
+
     }
+}
+
 
 
