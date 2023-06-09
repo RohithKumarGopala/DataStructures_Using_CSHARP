@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace DataStructures
 {
@@ -82,12 +83,12 @@ namespace DataStructures
             temp.Next = null;
         }
 
-       
-            public void DeleteAfter(Node<T> node)
-            {
-                Node<T> tempNode = node.Next;
-                node.Next = tempNode.Next;
-            }
+
+        public void DeleteAfter(Node<T> node)
+        {
+            Node<T> tempNode = node.Next;
+            node.Next = tempNode.Next;
+        }
         public void Display()
         {
             Node<T> temp = head;
@@ -96,7 +97,42 @@ namespace DataStructures
                 Console.Write(temp.Data + "->");
                 temp = temp.Next;
             }
-             Console.WriteLine("END");
+            Console.WriteLine("END");
+        }
+    }
+    public class Stack
+    {
+        LinkedList<int> linkedlist = new LinkedList<int>();
+        public void push(Node<int> node)
+        {
+            linkedlist.AddFirst(node);
+            Console.WriteLine("Linked list after push operation");
+            linkedlist.Display();
+        }
+
+        public void pop()
+        {
+            linkedlist.DeleteFirst();
+            Console.WriteLine("Linked list after pop operation");
+            linkedlist.Display();
+        }
+    }
+    public class Queue
+    {
+        LinkedList<int> myQueue = new LinkedList<int>();
+
+        public void enqueue(Node<int> node)
+        {
+            myQueue.AddFirst(node);
+            Console.WriteLine("My Queue after enqueue");
+            myQueue.Display();
+        }
+
+        public void dequeue()
+        {
+            myQueue.DeleteLast();
+            Console.WriteLine("My Queue after dequeue");
+            myQueue.Display();
         }
     }
 }
